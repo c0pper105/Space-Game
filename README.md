@@ -1,3 +1,3 @@
 # Space-Game
 
-GAY GAY GAY
+GAY GAY GAY gay gay
