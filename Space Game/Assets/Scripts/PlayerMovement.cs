@@ -64,15 +64,11 @@ public class PlayerMovement : MonoBehaviour
             curSin = Mathf.Sin(transform.rotation.z);
             curCos = Mathf.Cos(transform.rotation.z) * -1;
 
-            Debug.Log("Facing Left");
-
         } else
         {
             curSin = Mathf.Sin(transform.rotation.z);
             curCos = Mathf.Cos(transform.rotation.z);
         }
-
-        Debug.Log(curCos + " " + curSin);
 
         dir = new Vector2(curCos, curSin);
     }
