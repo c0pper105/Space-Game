@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRb = gameObject.GetComponent<Rigidbody2D>();
 
-        speed = 100f;
+        speed = 200f;
 
     }
 
@@ -48,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Steering(float horizontal)
-    {
-        transform.Rotate(0f, 0f, -horizontal * 5f);
+    {  
+        transform.Rotate(0f, 0f, -horizontal * 150f * Time.deltaTime);
     }
 
     void DirectionFunction()
@@ -57,18 +57,19 @@ public class PlayerMovement : MonoBehaviour
         float curSin = 0;
         float curCos = 0;
 
+        curSin = Mathf.Sin((angle * Mathf.PI) / 180);
+        curCos = Mathf.Cos((angle*Mathf.PI)/180);
 
-
-        if (angle > 90 && 270 > angle)
+        /*if (angle > 90 && 270 > angle)
         {
-            curSin = Mathf.Sin(transform.rotation.z);
-            curCos = Mathf.Cos(transform.rotation.z) * -1;
+            curSin = Mathf.Sin(transform.eulerAngles.z);
+            curCos = Mathf.Cos(transform.eulerAngles.z) * -1;
 
         } else
         {
-            curSin = Mathf.Sin(transform.rotation.z);
-            curCos = Mathf.Cos(transform.rotation.z);
-        }
+            curSin = Mathf.Sin(transform.eulerAngles.z);
+            curCos = Mathf.Cos(transform.eulerAngles.z);
+        }*/
 
         dir = new Vector2(curCos, curSin);
     }
