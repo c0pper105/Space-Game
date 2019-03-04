@@ -4,46 +4,40 @@ using UnityEngine;
 
 public class ShootingFunction : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    public GameObject bullet = null;
 
-    [SerializeField] float attackRate;
-    [SerializeField] float nextAttack;
-    [SerializeField] float timer;
-    [SerializeField] float dir;
+    [SerializeField] Vector2 spawnPoint;
+
+
+    [SerializeField] GameObject player;
+    PlayerMovement playerMoveScript;
+    [SerializeField] float cos;
+    [SerializeField] float sin;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        playerMoveScript = player.GetComponent<PlayerMovement>();
 
-        attackRate = 3f;
-        nextAttack = 0f;
-
-        
+        StartCoroutine(SpawnBullet());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        timer = Time.time;
-        dir = player.transform.eulerAngles.z;
+        cos = playerMoveScript.curCos;
+        sin = playerMoveScript.curSin;
 
-        ContinouslyShooting();
+        spawnPoint = new Vector2(transform.position.x + cos * 0.8f, transform.position.y + sin * 0.8f);
     }
 
     IEnumerator SpawnBullet()
     {
-            yield return new WaitForSeconds(3f);
-            GameObject bullet = Instantiate(gameObject, player.transform.position, Quaternion.identity);
-    }
-
-    void ContinouslyShooting()
-    {
-        if (nextAttack <= timer)
+        while (true)
         {
-            StartCoroutine(SpawnBullet());
-
-            nextAttack += attackRate;
+            
+            yield return new WaitForSeconds(0.3f);
+            GameObject bul = Instantiate(bullet, spawnPoint, Quaternion.identity);
         }
     }
 }

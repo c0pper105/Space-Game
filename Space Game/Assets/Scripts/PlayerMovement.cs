@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float horizontal;
     [SerializeField] float vertical;
     [SerializeField] float angle;
-    [SerializeField] Vector2 dir;
+
+    public Vector2 dir;
+    public float curSin = 0;
+    public float curCos = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -54,22 +57,9 @@ public class PlayerMovement : MonoBehaviour
 
     void DirectionFunction()
     {
-        float curSin = 0;
-        float curCos = 0;
 
         curSin = Mathf.Sin((angle * Mathf.PI) / 180);
         curCos = Mathf.Cos((angle*Mathf.PI)/180);
-
-        /*if (angle > 90 && 270 > angle)
-        {
-            curSin = Mathf.Sin(transform.eulerAngles.z);
-            curCos = Mathf.Cos(transform.eulerAngles.z) * -1;
-
-        } else
-        {
-            curSin = Mathf.Sin(transform.eulerAngles.z);
-            curCos = Mathf.Cos(transform.eulerAngles.z);
-        }*/
 
         dir = new Vector2(curCos, curSin);
     }
