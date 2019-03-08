@@ -11,6 +11,8 @@ public class BulletMoving : MonoBehaviour
     [SerializeField] float cos;
     [SerializeField] float sin;
 
+    public int bulletPower;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class BulletMoving : MonoBehaviour
         sin = playerMoveScript.curSin;
 
         speed = 7f;
+        bulletPower = 2;
 
         StartCoroutine(BulletDestroy());
     }
@@ -33,7 +36,7 @@ public class BulletMoving : MonoBehaviour
 
     IEnumerator BulletDestroy()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         Destroy(gameObject);
     }
 }
