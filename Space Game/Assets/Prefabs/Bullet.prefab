@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5645841495140941903}
   - component: {fileID: 9134967089493580180}
   - component: {fileID: 3387458815770511200}
+  - component: {fileID: 545354692194209505}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -93,8 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6b2d743c648f84a8cd12a4b1faa5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trajectory: {x: 0, y: 0}
   speed: 0
+  player: {fileID: 0}
+  cos: 0
+  sin: 0
+  bulletPower: 0
 --- !u!58 &3387458815770511200
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -111,3 +115,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!50 &545354692194209505
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263926672160901755}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -15,7 +15,6 @@ public class AsteroidHealth : MonoBehaviour
     void Start()
     {
         bulScript = bullet.GetComponent<BulletMoving>();
-        damage = bulScript.bulletPower;
 
         TypeOfAsteroid();
     }
@@ -23,7 +22,8 @@ public class AsteroidHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        damage = bulScript.bulletPower;
+        Debug.Log(damage);
     }
 
     void TypeOfAsteroid()
@@ -48,10 +48,12 @@ public class AsteroidHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.name == "Bullet(Clone)")
+        if (collision.gameObject.name == "Bullet(Clone)")
         {
+
             health -= damage;
             Debug.Log(health);
+            Destroy(collision.gameObject);
         }
     }
 }
